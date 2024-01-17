@@ -1,3 +1,7 @@
 /.vscode
 /keras_example.code-workspace
-/model.h5
+**.code-workspace
+**.bmp
+**.eps
+**.h5
+
