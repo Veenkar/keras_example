@@ -36,3 +36,10 @@ print(test_labels)
 
 print(type(test_images))
 # print(test_images.shape)
+
+# Calculate accuracy
+accuracy = np.mean(predicted_labels == test_labels) * 100
+
+# Print the accuracy
+print("Accuracy:", accuracy)
+

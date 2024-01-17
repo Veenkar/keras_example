@@ -15,7 +15,6 @@ def perform_detection(image):
     reshaped_image = normalized_image.reshape((-1, 784))
 
     # Load the trained model
-    model = load_model('model.h5')
 
     # Make prediction on the image
     prediction = model.predict(reshaped_image)
@@ -30,7 +29,7 @@ def perform_detection(image):
 def draw(event):
     x = event.x
     y = event.y
-    canvas.create_rectangle(x, y, x + 10, y + 10, fill='black')
+    canvas.create_rectangle(x, y, x + 12, y + 12, fill='black')
 
 def save_drawing():
     canvas.postscript(file="drawing.eps", colormode='color')
@@ -76,5 +75,7 @@ clear_button.pack()
 
 detected_label = tk.Label(root, text="Detected Digit: ")
 detected_label.pack()
+
+model = load_model('model.h5')
 
 root.mainloop()
