@@ -9,15 +9,17 @@ import matplotlib.pyplot as plt
 
 def perform_detection(image):
     # Normalize the image
-    normalized_image = (image / 255) - 0.5
+    # image = np.where(image > 16, 255.0, 0)
+
+    image = (image / 255) - 0.5
 
     # Reshape the image
-    reshaped_image = normalized_image.reshape((-1, 784))
+    image = image.reshape((-1, 784))
 
     # Load the trained model
 
     # Make prediction on the image
-    prediction = model.predict(reshaped_image)
+    prediction = model.predict(image)
 
     # Convert prediction to label
     predicted_label = np.argmax(prediction)
@@ -29,7 +31,7 @@ def perform_detection(image):
 def draw(event):
     x = event.x
     y = event.y
-    canvas.create_rectangle(x, y, x + 12, y + 12, fill='black')
+    canvas.create_oval(x, y, x + 15, y + 15, fill='black')
 
 def save_drawing():
     canvas.postscript(file="drawing.eps", colormode='color')
@@ -39,6 +41,7 @@ def save_drawing():
 
     # Invert the image
     img = ImageOps.invert(img)
+
     img.save("drawing.bmp", "BMP")
 
     np_img = np.array([np.array(img)])

@@ -7,6 +7,9 @@ import matplotlib.pyplot as plt
 # Load the data
 (_, _), (test_images, test_labels) = mnist.load_data()
 
+# Convert train_images to binary images
+test_images = np.where(test_images > 16.0, 255.0, 0)
+
 # Normalize the images.
 test_images = (test_images / 255) - 0.5
 
